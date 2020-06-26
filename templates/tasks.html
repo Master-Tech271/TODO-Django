@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{%block title%} Tasks {%endblock title%}
+{%block tasksactive%}active{%endblock tasksactive%}
+{% block body %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 text-center text-success h1">
+            Here is the list of your tasks
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task Title</th>
+            <th scope="col">Task Description</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{task.taskName}}</td>
+            <td>{{task.taskDescription}}</td>
+            <td>{{task.taskTime}}</td>
+          </tr>
+        {% endfor %}
+          </tbody>
+      </table>
+</div>
+  {% endblock body%}
+  {% block script %}
+  <script>
+    $(document).ready(function() {
+        $('.table').dataTable();
+    });
+  </script>
+  {% endblock script %}
